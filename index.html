@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVA Tuition Assistance & Zakah Fund</title>
+    <style>
+        :root {
+            /* PROFESSIONAL TEAL PALETTE */
+            --primary-900: #134e4a;
+            --primary-700: #0f766e;
+            --primary-600: #0d9488;
+            --primary-500: #14b8a6;
+            --primary-50:  #f0fdfa;
+            
+            /* NEUTRALS */
+            --slate-900: #0f172a;
+            --slate-600: #475569;
+            --slate-400: #94a3b8;
+            --slate-100: #f1f5f9;
+            --slate-50:  #f8fafc;
+            --white:     #ffffff;
+
+            /* ACCENTS */
+            --amber-600: #d97706;
+            --amber-50:  #fffbeb;
+            --danger:    #ef4444;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: var(--slate-50);
+            color: var(--slate-900);
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* HEADER */
+        header {
+            background-color: var(--primary-900);
+            background-image: linear-gradient(to bottom right, var(--primary-900), var(--primary-700));
+            color: var(--white);
+            padding: 4rem 1.5rem 6rem;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin: 0 0 1rem 0;
+            letter-spacing: -0.025em;
+        }
+
+        header p {
+            font-size: 1.125rem;
+            color: var(--primary-50);
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        .container {
+            max-width: 1024px;
+            margin: -60px auto 40px;
+            padding: 0 20px;
+        }
+
+        /* CARD UTILITY */
+        .card {
+            background: var(--white);
+            border: 1px solid var(--slate-100);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        /* 1. ZAKAH COMMITMENT SECTION */
+        .policy-section {
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+        }
+        
+        .policy-header {
+            background: var(--primary-50);
+            padding: 2rem;
+            border-left: 4px solid var(--primary-600);
+        }
+        
+        .policy-header h2 {
+            color: var(--primary-900);
+            margin: 0 0 0.5rem 0;
+            font-size: 1.5rem;
+        }
+
+        .policy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            border-top: 1px solid var(--slate-100);
+        }
+
+        .policy-item {
+            padding: 2rem;
+            border-right: 1px solid var(--slate-100);
+        }
+        .policy-item:last-child { border-right: none; }
+        
+        .policy-icon { font-size: 1.5rem; margin-bottom: 1rem; display: block; }
+        .policy-title { font-weight: 600; color: var(--primary-900); display: block; margin-bottom: 0.5rem; }
+        .policy-desc { font-size: 0.875rem; color: var(--slate-600); }
+
+        /* 2. STEPS VISUAL */
+        .steps-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin: 3rem 0;
+            position: relative;
+        }
+        .steps-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 24px;
+            left: 50px;
+            right: 50px;
+            height: 2px;
+            background: var(--slate-100);
+            z-index: 0;
+        }
+
+        .step {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            flex: 1;
+            padding: 0 10px;
+        }
+        
+        .step-circle {
+            width: 50px;
+            height: 50px;
+            background: var(--white);
+            border: 2px solid var(--primary-200);
+            color: var(--primary-700);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-weight: 700;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            transition: all 0.2s;
+        }
+        .step-title { font-weight: 600; font-size: 0.95rem; display: block; margin-bottom: 4px; }
+        .step-caption { font-size: 0.8rem; color: var(--slate-400); }
+
+        /* NEW: TIMELINE SECTION */
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        .timeline-card {
+            background: var(--white);
+            border: 1px solid var(--slate-100);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: left;
+            border-left: 4px solid var(--primary-200);
+        }
+        .timeline-date { color: var(--primary-700); font-weight: 800; font-size: 1.1rem; display: block; margin-bottom: 5px; }
+        .timeline-label { font-weight: 600; color: var(--slate-900); display: block; margin-bottom: 5px; }
+        .timeline-desc { font-size: 0.85rem; color: var(--slate-600); }
+        .timeline-card.featured { border-left-color: var(--amber-600); background: var(--amber-50); }
+
+        /* 3. CALCULATOR DASHBOARD */
+        .calc-dashboard {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+        }
+        .calc-inputs { padding: 2.5rem; border-right: 1px solid var(--slate-100); }
+        .calc-title { font-size: 1.25rem; font-weight: 600; color: var(--slate-900); margin-bottom: 0.5rem; }
+        .calc-subtitle { font-size: 0.875rem; color: var(--slate-600); margin-bottom: 2rem; }
+        .input-group { margin-bottom: 2rem; }
+        .input-label-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; }
+        .input-label { font-size: 0.875rem; font-weight: 600; color: var(--slate-600); }
+        .input-value { font-size: 1rem; font-weight: 700; color: var(--primary-700); font-variant-numeric: tabular-nums; }
+        .input-desc { font-size: 0.75rem; color: var(--slate-400); margin-top: 0.5rem; }
+
+        input[type=range] { width: 100%; height: 6px; background: var(--slate-100); border-radius: 3px; outline: none; -webkit-appearance: none; }
+        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%; background: var(--primary-600); cursor: pointer; box-shadow: 0 0 0 4px rgba(13, 148, 136, 0.2); transition: background 0.15s; }
+        input[type=range]::-webkit-slider-thumb:hover { background: var(--primary-700); }
+
+        .calc-output { background: var(--primary-900); color: white; padding: 2.5rem; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; position: relative; }
+        .calc-output::before { content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 20px 20px; opacity: 0.5; pointer-events: none; }
+        .output-label { text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; color: var(--primary-500); font-weight: 700; margin-bottom: 1rem; position: relative; }
+        .output-percent { font-size: 5rem; font-weight: 800; line-height: 1; color: var(--white); position: relative; }
+        .output-sub { font-size: 0.9rem; color: var(--primary-50); margin-top: 1rem; opacity: 0.8; max-width: 200px; position: relative; }
+        
+        .calc-output.ineligible { background: var(--slate-100); color: var(--slate-900); border-left: 4px solid var(--danger); }
+        .calc-output.ineligible .output-percent { color: var(--slate-400); font-size: 3rem; }
+        .calc-output.ineligible .output-label { color: var(--danger); }
+        .calc-output.ineligible .output-sub { color: var(--slate-600); }
+        .calc-output.ineligible::before { display: none; }
+
+        /* NEW: EXTERNAL RESOURCES SECTION */
+        .resources-section { margin-bottom: 3rem; }
+        .resources-title { text-align: center; margin-bottom: 1.5rem; color: var(--slate-600); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; }
+        .resource-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+        .resource-card { background: white; border: 1px solid var(--slate-200); border-radius: 8px; padding: 1.5rem; text-align: center; transition: transform 0.2s; }
+        .resource-card:hover { border-color: var(--primary-400); transform: translateY(-2px); }
+        .resource-name { font-weight: 700; color: var(--primary-800); margin-bottom: 5px; display: block; }
+        .resource-type { font-size: 0.8rem; color: var(--slate-500); }
+
+        /* 4. PRE-K OFFER (Bottom) */
+        .offer-banner {
+            background: linear-gradient(to right, var(--amber-50), var(--white));
+            border: 1px solid var(--amber-600);
+            border-left: 6px solid var(--amber-600);
+            border-radius: 8px;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        .offer-text h3 { margin: 0 0 0.5rem 0; color: var(--slate-900); font-size: 1.25rem; }
+        .offer-text p { margin: 0; color: var(--slate-600); font-size: 0.95rem; }
+        .offer-badge { background: var(--amber-600); color: white; padding: 0.5rem 1rem; border-radius: 4px; font-weight: 700; font-size: 0.875rem; white-space: nowrap; }
+
+        footer { margin-top: 4rem; padding: 3rem 1.5rem; border-top: 1px solid var(--slate-200); text-align: center; }
+        .legal { max-width: 800px; margin: 0 auto; font-size: 0.75rem; color: var(--slate-400); text-align: justify; line-height: 1.6; }
+        .legal strong { color: var(--slate-600); }
+        .legal p { margin-bottom: 1rem; }
+
+        @media (max-width: 768px) {
+            .steps-wrapper::before { display: none; }
+            .steps-wrapper { flex-direction: column; gap: 20px; }
+            .step { display: flex; text-align: left; align-items: center; width: 100%; padding: 10px; background: white; border-radius: 8px; border: 1px solid var(--slate-100); }
+            .step-circle { margin: 0 15px 0 0; width: 40px; height: 40px; font-size: 0.9rem; }
+            
+            .timeline-grid { grid-template-columns: 1fr; }
+            .calc-dashboard { grid-template-columns: 1fr; }
+            .calc-inputs { border-right: none; border-bottom: 1px solid var(--slate-100); }
+            .offer-banner { flex-direction: column; align-items: flex-start; text-align: left; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Tuition Assistance & Zakah Fund</h1>
+    <p>A community promise to support education with dignity, fairness, and faith.</p>
+</header>
+
+<div class="container">
+
+    <div class="card policy-section">
+        <div class="policy-header">
+            <h2>Our Commitment to Dignity</h2>
+            <p style="margin:0; color:#475569;">We administer Zakah and Sadqah funds with the utmost privacy, ensuring that financial barriers never stand in the way of a quality Islamic education.</p>
+        </div>
+        <div class="policy-grid">
+            <div class="policy-item">
+                <span class="policy-icon">⚖️</span>
+                <span class="policy-title">Zakah Eligible</span>
+                <span class="policy-desc">Funds are restricted to families meeting specific Islamic financial guidelines.</span>
+            </div>
+            <div class="policy-item">
+                <span class="policy-icon">🔒</span>
+                <span class="policy-title">Confidential Review</span>
+                <span class="policy-desc">Applications are anonymized and reviewed by a dedicated committee.</span>
+            </div>
+            <div class="policy-item">
+                <span class="policy-icon">🤝</span>
+                <span class="policy-title">Community Trust</span>
+                <span class="policy-desc">Funded 100% by community donations to support our families.</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="steps-wrapper">
+        <div class="step">
+            <div class="step-circle">1</div>
+            <div>
+                <span class="step-title">Calculate Need</span>
+                <span class="step-caption">Use the estimator below to check eligibility.</span>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-circle">2</div>
+            <div>
+                <span class="step-title">Verify Income</span>
+                <span class="step-caption">Prepare Tax Returns (1040) & Debt proofs.</span>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-circle">3</div>
+            <div>
+                <span class="step-title">Apply Securely</span>
+                <span class="step-caption">Submit via the private Parent Portal.</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="timeline-grid">
+        <div class="timeline-card">
+            <span class="timeline-date">Jan 15, 2026</span>
+            <span class="timeline-label">Applications Open</span>
+            <div class="timeline-desc">Portal opens for submissions. Applications are reviewed on a rolling, first-come first-served basis.</div>
+        </div>
+        <div class="timeline-card">
+            <span class="timeline-date">Apr 15, 2026</span>
+            <span class="timeline-label">Decision Deadline</span>
+            <div class="timeline-desc">Priority grant decisions are released. Funds are allocated based on availability.</div>
+        </div>
+        <div class="timeline-card featured">
+            <span class="timeline-date">Year Round</span>
+            <span class="timeline-label">Emergency Aid</span>
+            <div class="timeline-desc">We know life happens. If your situation changes mid-year, our door is always open to discuss support.</div>
+        </div>
+    </div>
+
+    <div class="card calc-dashboard">
+        <div class="calc-inputs">
+            <div class="calc-title">Eligibility Estimator</div>
+            <div class="calc-subtitle">We calculate aid based on your <strong>Net Financial Position</strong> (Income minus Debt).</div>
+
+            <div class="input-group">
+                <div class="input-label-row">
+                    <span class="input-label">Students Enrolling (K-8)</span>
+                    <span class="input-value" id="kidsDisplay">2</span>
+                </div>
+                <input type="range" id="kidsRange" min="1" max="5" value="2" oninput="calculateAid()">
+            </div>
+
+            <div class="input-group">
+                <div class="input-label-row">
+                    <span class="input-label">Annual Family Income (AGI)</span>
+                    <span class="input-value">$<span id="incomeDisplay">90,000</span></span>
+                </div>
+                <input type="range" id="incomeRange" min="30000" max="220000" step="1000" value="90000" oninput="calculateAid()">
+                <div class="input-desc">Gross income before taxes.</div>
+            </div>
+
+            <div class="input-group" style="margin-bottom:0;">
+                <div class="input-label-row">
+                    <span class="input-label">Annual Debt Payments</span>
+                    <span class="input-value">$<span id="debtDisplay">12,000</span></span>
+                </div>
+                <input type="range" id="debtRange" min="0" max="60000" step="1000" value="12000" oninput="calculateAid()">
+                <div class="input-desc">Include rent, mortgage, medical bills, or loan repayments.</div>
+            </div>
+        </div>
+
+        <div id="aidResult" class="calc-output">
+            <div class="output-label">Estimated Tuition Assistance</div>
+            <div class="output-percent" id="percentOutput">--%</div>
+            <div class="output-sub" id="resultSub">Based on the 20% affordability standard.</div>
+        </div>
+    </div>
+
+    <div class="resources-section">
+        <div class="resources-title">Maximize Your Support</div>
+        <p style="text-align:center; max-width:700px; margin:0 auto 1.5rem; color:#64748b; font-size:0.9rem;">
+            We encourage families to explore all avenues of support. We partner with these organizations and others to ensure you get the help you need. 
+            <strong>Please apply to SVA regardless of other applications.</strong>
+        </p>
+        <div class="resource-list">
+            <div class="resource-card">
+                <span class="resource-name">Hidaya Foundation</span>
+                <span class="resource-type">Education Assistance</span>
+            </div>
+            <div class="resource-card">
+                <span class="resource-name">Rahima Foundation</span>
+                <span class="resource-type">Local Family Support</span>
+            </div>
+            <div class="resource-card">
+                <span class="resource-name">Local Masjid Zakat</span>
+                <span class="resource-type">Community Funds</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="offer-banner">
+        <div class="offer-badge">WORKING PARENTS GRANT</div>
+        <div class="offer-text">
+            <h3>Pre-K Dual Income Assistance</h3>
+            <p>To support working families, we offer tuition relief of <strong>up to 40%</strong> for Pre-K students with two working parents who meet income eligibility requirements.</p>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <div class="legal">
+        <p><strong>DISCLAIMER: ESTIMATE ONLY.</strong> The "Eligibility Estimator" is a planning tool and does not constitute a binding offer. Results are based on the data entered and the school's "Net Income" model.</p>
+        <p><strong>VERIFICATION:</strong> Final awards are determined by the Financial Aid Committee upon review of official documentation (Federal Tax Returns, W-2s, Proof of Debt). The school reserves the right to determine allowable debt deductions.</p>
+        <p><strong>FUNDING:</strong> All assistance is contingent upon the availability of Zakah funds. SVA admits students of any race, color, national and ethnic origin to all rights and activities.</p>
+        <p style="margin-top: 2rem; opacity: 0.5;">© 2025 Silicon Valley Academy</p>
+    </div>
+</footer>
+
+<script>
+    /* LOGIC CONFIGURATION */
+    const AVG_TUITION_PER_STUDENT = 14500; 
+    const MAX_INCOME_LIMIT = 180000;
+    const MAX_DISCOUNT_CAP = 60; // Max 60%
+    const CONTRIBUTION_RATIO = 0.20; // Family pays 20% of Net Income
+
+    function calculateAid() {
+        const income = parseInt(document.getElementById('incomeRange').value);
+        const debt = parseInt(document.getElementById('debtRange').value);
+        const kids = parseInt(document.getElementById('kidsRange').value);
+        
+        document.getElementById('kidsDisplay').innerText = kids;
+        document.getElementById('incomeDisplay').innerText = income.toLocaleString();
+        document.getElementById('debtDisplay').innerText = debt.toLocaleString();
+
+        const resultBox = document.getElementById('aidResult');
+        const percentOutput = document.getElementById('percentOutput');
+        const resultSub = document.getElementById('resultSub');
+
+        if (income > MAX_INCOME_LIMIT) {
+            resultBox.className = "calc-output ineligible";
+            percentOutput.innerText = "N/A";
+            percentOutput.style.fontSize = "3rem";
+            resultSub.innerText = "Gross income exceeds the $180k limit for Zakah funds.";
+            return;
+        }
+
+        let netIncome = income - debt;
+        if (netIncome < 0) netIncome = 0; 
+
+        let affordableAmount = netIncome * CONTRIBUTION_RATIO;
+        let totalTuition = kids * AVG_TUITION_PER_STUDENT;
+        let gap = totalTuition - affordableAmount;
+        let discountPercent = 0;
+
+        if (gap > 0) {
+            discountPercent = (gap / totalTuition) * 100;
+        }
+
+        if (discountPercent > MAX_DISCOUNT_CAP) discountPercent = MAX_DISCOUNT_CAP;
+        if (discountPercent < 0) discountPercent = 0;
+
+        resultBox.className = "calc-output"; 
+        percentOutput.style.fontSize = "5rem";
+
+        if (discountPercent <= 0) {
+            percentOutput.innerText = "0%";
+            resultSub.innerText = "Standard tuition fits within 20% of your net income.";
+        } else {
+            percentOutput.innerText = Math.round(discountPercent) + "%";
+            resultSub.innerText = `Calculated on a Net Income of $${netIncome.toLocaleString()}.`;
+        }
+    }
+
+    calculateAid();
+</script>
+
+</body>
+</html>
