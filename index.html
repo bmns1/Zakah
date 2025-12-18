@@ -334,6 +334,14 @@
 
             <div class="input-group">
                 <div class="input-label-row">
+                    <span class="input-label">Number of Persons in Household</span>
+                    <span class="input-value" id="HouseHoldDisplay">2</span>
+                </div>
+                <input type="range" id="HouseholdRange" min="2" max="8" value="2" oninput="calculateAid()">
+            </div>
+            
+            <div class="input-group">
+                <div class="input-label-row">
                     <span class="input-label">Students Enrolling (K-8)</span>
                     <span class="input-value" id="kidsDisplay">2</span>
                 </div>
@@ -432,7 +440,7 @@
 
 <script>
     /* LOGIC CONFIGURATION */
-    const AVG_TUITION_PER_STUDENT = 14500; 
+    const AVG_TUITION_PER_STUDENT = 13500; 
     const MAX_INCOME_LIMIT = 180000;
     const MAX_DISCOUNT_CAP = 60; // Max 60%
     const MAX_DISCOUNT_CAP_L = 50; // Max 50%
@@ -442,7 +450,9 @@
         const income = parseInt(document.getElementById('incomeRange').value);
         const debt = parseInt(document.getElementById('debtRange').value);
         const kids = parseInt(document.getElementById('kidsRange').value);
+        const household = parseInt(document.getElementById('HouseholdRange').value);
         
+        document.getElementById('HouseHoldDisplay').innerText = household;
         document.getElementById('kidsDisplay').innerText = kids;
         document.getElementById('incomeDisplay').innerText = income.toLocaleString();
         document.getElementById('debtDisplay').innerText = debt.toLocaleString();
@@ -462,7 +472,7 @@
             return;
         }
 
-        let netIncome = income - debt;
+        let netIncome = income - debt - 5000*household;
         if (netIncome < 0) netIncome = 0; 
 
         let affordableAmount = netIncome * CONTRIBUTION_RATIO;
