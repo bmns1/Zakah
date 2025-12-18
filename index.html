@@ -361,7 +361,12 @@
 
         <div id="aidResult" class="calc-output">
             <div class="output-label">Estimated Tuition Assistance</div>
-            <div class="output-percent" id="percentOutput">--%</div>
+          <!--  <div class="output-percent" id="percentOutput">--%</div> -->
+            <div class="output-percent">
+              <span id="percentOutput_l">--%</span> 
+               <span class="separator"> to </span> 
+              <span id="percentOutput">--%</span>
+            </div>
             <div class="output-sub">The estimates may not reflect final granted values.‡</div> <!-- id="resultSub"> -->
         </div>
     </div>
@@ -421,6 +426,7 @@
     const AVG_TUITION_PER_STUDENT = 14500; 
     const MAX_INCOME_LIMIT = 180000;
     const MAX_DISCOUNT_CAP = 60; // Max 60%
+    const MAX_DISCOUNT_CAP_L = 50; // Max 50%
     const CONTRIBUTION_RATIO = 0.20; // Family pays 20% of Net Income
 
     function calculateAid() {
@@ -434,13 +440,16 @@
 
         const resultBox = document.getElementById('aidResult');
         const percentOutput = document.getElementById('percentOutput');
+        const percentOutput_l = document.getElementById('percentOutput_l');
         const resultSub = document.getElementById('resultSub');
 
         if (income > MAX_INCOME_LIMIT) {
             resultBox.className = "calc-output ineligible";
             percentOutput.innerText = "N/A";
+            percentOutput_l.innerText = "N/A";
             percentOutput.style.fontSize = "3rem";
-            resultSub.innerText = "Gross income exceeds the $180k limit for Zakat funds.";
+            percentOutput_l.style.fontSize = "3rem";
+            resultSub.innerText = "Gross income exceeds the $180k limit for assiatance funds.";
             return;
         }
 
@@ -451,23 +460,36 @@
         let totalTuition = kids * AVG_TUITION_PER_STUDENT;
         let gap = totalTuition - affordableAmount;
         let discountPercent = 0;
+        let discountPercent_l = 0;
 
         if (gap > 0) {
             discountPercent = (gap / totalTuition) * 100;
+            discountPercent_l = (gap / totalTuition) * 80;
         }
 
         if (discountPercent > MAX_DISCOUNT_CAP) discountPercent = MAX_DISCOUNT_CAP;
-        if (discountPercent < 0) discountPercent = 0;
+        if (discountPercent < 10) discountPercent = 10;
+
+        if (discountPercent_l > MAX_DISCOUNT_CAP_L) discountPercent_l = MAX_DISCOUNT_CAP_L;
+        if (discountPercent_l < 0) discountPercent_l = 0;
 
         resultBox.className = "calc-output"; 
         percentOutput.style.fontSize = "5rem";
 
-        if (discountPercent <= 0) {
-            percentOutput.innerText = "0%";
+        if (discountPercent <= 10) {
+            percentOutput.innerText = "10%";
             resultSub.innerText = "Standard tuition fits within 20% of your net income.";
         } else {
             percentOutput.innerText = Math.round(discountPercent) + "%";
             resultSub.innerText = `Calculated on a Net Income of $${netIncome.toLocaleString()}.`;
+        }
+
+        if (discountPercent <= 0) {
+            percentOutput_l.innerText = "0%";
+            //resultSub.innerText = "Standard tuition fits within 20% of your net income.";
+        } else {
+            percentOutput_l.innerText = Math.round(discountPercent_l) + "%";
+            //resultSub.innerText = `Calculated on a Net Income of $${netIncome.toLocaleString()}.`;
         }
     }
 
