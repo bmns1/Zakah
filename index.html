@@ -471,7 +471,7 @@
 
         if (gap > 0) {
             discountPercent = (gap / totalTuition) * 100;
-            discountPercent_l = (gap / totalTuition) * 80;
+            discountPercent_l = (gap / totalTuition) * 80 - 10;
         }
 
         if (discountPercent > MAX_DISCOUNT_CAP) discountPercent = MAX_DISCOUNT_CAP;
@@ -488,18 +488,18 @@
 
         if (discountPercent <= 10) {
             percentOutput.innerText = "10%";
-            resultSub.innerText = "Standard tuition fits within 20% of your net income.";
+            resultSub.innerText = "The estimates may not reflect final granted values.‡";
         } else {
             percentOutput.innerText = Math.round(discountPercent) + "%";
-            resultSub.innerText = `Calculated on a Net Income of $${netIncome.toLocaleString()}.`;
+            resultSub.innerText = `The estimates may not reflect final granted values.‡`;
         }
 
         if (discountPercent_l <= 0) {
             percentOutput_l.innerText = "0%";
-            resultSub.innerText = "Standard tuition fits within 20% of your net income.";
+            resultSub.innerText = "The estimates may not reflect final granted values.‡";
         } else {
             percentOutput_l.innerText = Math.round(discountPercent_l) + "%";
-            resultSub.innerText = `Calculated on a Net Income of $${netIncome.toLocaleString()}.`;
+            resultSub.innerText = `The estimates may not reflect final granted values.‡`;
         }
     }
 
