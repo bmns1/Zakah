@@ -337,7 +337,7 @@
                     <span class="input-label">Number of Persons in Household</span>
                     <span class="input-value" id="HouseHoldDisplay">2</span>
                 </div>
-                <input type="range" id="HouseholdRange" min="2" max="8" value="2" oninput="calculateAid()">
+                <input type="range" id="HouseholdRange" min="2" max="8" value="2" oninput="updateMaxKids(); calculateAid()">
             </div>
             
             <div class="input-group">
@@ -439,6 +439,15 @@
 </footer>
 
 <script>
+
+    function updateMaxKids() {
+      var household = document.getElementById("HouseholdRange").value;
+      var kidsSlider = document.getElementById("kidsRange");
+
+      // This line changes the HTML max="..." attribute dynamically
+      kidsSlider.max = household - 1;
+}
+    
     /* LOGIC CONFIGURATION */
     const AVG_TUITION_PER_STUDENT = 13500; 
     const MAX_INCOME_LIMIT = 180000;
