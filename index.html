@@ -363,10 +363,17 @@
             <div class="output-label">Estimated Tuition Assistance</div>
           <!--  <div class="output-percent" id="percentOutput">--%</div> -->
             <div class="output-percent">
+    <span id="percentOutput_l">--%</span>
+    
+    <span style="font-size: 0.5em; color: #666;"> to </span>
+    
+    <span id="percentOutput">--%</span>
+</div>
+           <!-- <div class="output-percent">
               <span id="percentOutput_l">--%</span> 
                <span class="separator"> to </span> 
               <span id="percentOutput">--%</span>
-            </div>
+            </div> -->
             <div class="output-sub">The estimates may not reflect final granted values.‡</div> <!-- id="resultSub"> -->
         </div>
     </div>
@@ -476,6 +483,9 @@
         resultBox.className = "calc-output"; 
         percentOutput.style.fontSize = "5rem";
 
+       // resultBox.className = "calc-output"; 
+        percentOutput_l.style.fontSize = "5rem";
+
         if (discountPercent <= 10) {
             percentOutput.innerText = "10%";
             resultSub.innerText = "Standard tuition fits within 20% of your net income.";
@@ -486,10 +496,10 @@
 
         if (discountPercent_l <= 0) {
             percentOutput_l.innerText = "0%";
-            //resultSub.innerText = "Standard tuition fits within 20% of your net income.";
+            resultSub.innerText = "Standard tuition fits within 20% of your net income.";
         } else {
             percentOutput_l.innerText = Math.round(discountPercent_l) + "%";
-            //resultSub.innerText = `Calculated on a Net Income of $${netIncome.toLocaleString()}.`;
+            resultSub.innerText = `Calculated on a Net Income of $${netIncome.toLocaleString()}.`;
         }
     }
 
