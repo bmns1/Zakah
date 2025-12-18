@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SVA Tuition Assistance & Zakah Fund</title>
+    <title>SVA Tuition Assistance & Zakat Fund</title>
     <style>
         :root {
             /* PROFESSIONAL TEAL PALETTE */
@@ -255,7 +255,7 @@
 <body>
 
 <header>
-    <h1>Tuition Assistance & Zakah Fund</h1>
+    <h1>Tuition Assistance Program</h1>
     <p>A community promise to support education with dignity, fairness, and faith.</p>
 </header>
 
@@ -264,12 +264,12 @@
     <div class="card policy-section">
         <div class="policy-header">
             <h2>Our Commitment to Dignity</h2>
-            <p style="margin:0; color:#475569;">We administer Zakah and Sadqah funds with the utmost privacy, ensuring that financial barriers never stand in the way of a quality Islamic education.</p>
+            <p style="margin:0; color:#475569;">We administer all forms of financial aid with the utmost privacy, ensuring that financial barriers never stand in the way of a quality Islamic education, whether through general donations, Zakat, or Sadaqa.</p>
         </div>
         <div class="policy-grid">
             <div class="policy-item">
                 <span class="policy-icon">⚖️</span>
-                <span class="policy-title">Zakah Eligible</span>
+                <span class="policy-title">Financial Need</span>
                 <span class="policy-desc">Funds are restricted to families meeting specific Islamic financial guidelines.</span>
             </div>
             <div class="policy-item">
@@ -304,21 +304,21 @@
             <div class="step-circle">3</div>
             <div>
                 <span class="step-title">Apply Securely</span>
-                <span class="step-caption">Submit via the private Parent Portal.</span>
+                <span class="step-caption">Submit via the private Portal.</span>
             </div>
         </div>
     </div>
 
     <div class="timeline-grid">
         <div class="timeline-card">
-            <span class="timeline-date">Jan 15, 2026</span>
+            <span class="timeline-date">Feb 9, 2026</span>
             <span class="timeline-label">Applications Open</span>
-            <div class="timeline-desc">Portal opens for submissions. Applications are reviewed on a rolling, first-come first-served basis.</div>
+            <div class="timeline-desc">Portal opens for submissions. Applications are reviewed on a rolling, first-come first-served basis based on eligibility.</div>
         </div>
         <div class="timeline-card">
-            <span class="timeline-date">Apr 15, 2026</span>
+            <span class="timeline-date">Apr 30, 2026</span>
             <span class="timeline-label">Decision Deadline</span>
-            <div class="timeline-desc">Priority grant decisions are released. Funds are allocated based on availability.</div>
+            <div class="timeline-desc">Priority grant decisions are released for applications completed by Apr 15, 2026. Funds are allocated based on availability.</div>
         </div>
         <div class="timeline-card featured">
             <span class="timeline-date">Year Round</span>
@@ -329,7 +329,7 @@
 
     <div class="card calc-dashboard">
         <div class="calc-inputs">
-            <div class="calc-title">Eligibility Estimator</div>
+            <div class="calc-title">Eligibility Estimator¹</div>
             <div class="calc-subtitle">We calculate aid based on your <strong>Net Financial Position</strong> (Income minus Debt).</div>
 
             <div class="input-group">
@@ -351,18 +351,18 @@
 
             <div class="input-group" style="margin-bottom:0;">
                 <div class="input-label-row">
-                    <span class="input-label">Annual Debt Payments</span>
+                    <span class="input-label">Annual Debt Payments¹</span>
                     <span class="input-value">$<span id="debtDisplay">12,000</span></span>
                 </div>
                 <input type="range" id="debtRange" min="0" max="60000" step="1000" value="12000" oninput="calculateAid()">
-                <div class="input-desc">Include rent, mortgage, medical bills, or loan repayments.</div>
+                <div class="input-desc">Include rent, mortgage, medical bills, or loan repayments.‡</div>
             </div>
         </div>
 
         <div id="aidResult" class="calc-output">
             <div class="output-label">Estimated Tuition Assistance</div>
             <div class="output-percent" id="percentOutput">--%</div>
-            <div class="output-sub" id="resultSub">Based on the 20% affordability standard.</div>
+          <!--  <div class="output-sub" id="resultSub">Based on the 20% affordability standard.</div> -->
         </div>
     </div>
 
@@ -385,6 +385,14 @@
                 <span class="resource-name">Local Masjid Zakat</span>
                 <span class="resource-type">Community Funds</span>
             </div>
+            <div class="resource-card">
+                <span class="resource-name">Choices For Children</span>
+                <span class="resource-type">Subsidized Child Care</span>
+            </div>
+            <div class="resource-card">
+                <span class="resource-name">Basic Funds</span>
+                <span class="resource-type">School Scholarships</span>
+            </div>
         </div>
     </div>
 
@@ -392,7 +400,8 @@
         <div class="offer-badge">WORKING PARENTS GRANT</div>
         <div class="offer-text">
             <h3>Pre-K Dual Income Assistance</h3>
-            <p>To support working families, we offer tuition relief of <strong>up to 40%</strong> for Pre-K students with two working parents who meet income eligibility requirements.</p>
+            <span class="footnote-marker">‡</span>
+            <p>We understand that for families with two working parents out of necessity, childcare in an Islamic environment is often a necessity, not an option. To support you, we offer tuition relief of <strong>up to 40%</strong> for Pre-K students entering Kindergarten the following fall, subject to income eligibility and funds availability.</p>
         </div>
     </div>
 
@@ -400,9 +409,10 @@
 
 <footer>
     <div class="legal">
-        <p><strong>DISCLAIMER: ESTIMATE ONLY.</strong> The "Eligibility Estimator" is a planning tool and does not constitute a binding offer. Results are based on the data entered and the school's "Net Income" model.</p>
-        <p><strong>VERIFICATION:</strong> Final awards are determined by the Financial Aid Committee upon review of official documentation (Federal Tax Returns, W-2s, Proof of Debt). The school reserves the right to determine allowable debt deductions.</p>
-        <p><strong>FUNDING:</strong> All assistance is contingent upon the availability of Zakah funds. SVA admits students of any race, color, national and ethnic origin to all rights and activities.</p>
+        <p><strong>‡ DISCLAIMER: ESTIMATE ONLY.</strong> The "Eligibility Estimator" is a planning tool and does not constitute a binding offer. The "Eligibility Estimator" results are based on the data entered and the school's "Net Income" model.</p>
+        <p><strong>‡ VERIFICATION:</strong> Final awards are determined by the Financial Aid Committee upon review of official documentation (Federal Tax Returns, W-2s, Proof of Debt). The school reserves the right to determine allowable debt deductions.</p>
+        <p><strong>‡ FUNDING:</strong> All assistance is contingent upon the availability of Sadaqa, Zakat, or general donations funds. </p>
+        <p><strong>‡ NON-DISCRIMINATION:</strong> SVA does not discriminate on the basis of race, color, national or ethnic origin, sex, or disability in its scholarship programs or any other educational activities. All qualified individuals are encouraged to apply.</p>
         <p style="margin-top: 2rem; opacity: 0.5;">© 2025 Silicon Valley Academy</p>
     </div>
 </footer>
@@ -431,7 +441,7 @@
             resultBox.className = "calc-output ineligible";
             percentOutput.innerText = "N/A";
             percentOutput.style.fontSize = "3rem";
-            resultSub.innerText = "Gross income exceeds the $180k limit for Zakah funds.";
+            resultSub.innerText = "Gross income exceeds the $180k limit for Zakat funds.";
             return;
         }
 
