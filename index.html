@@ -213,7 +213,19 @@
         /* NEW: EXTERNAL RESOURCES SECTION */
         .resources-section { margin-bottom: 3rem; }
         .resources-title { text-align: center; margin-bottom: 1.5rem; color: var(--slate-600); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; }
-        .resource-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+        /*.resource-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }*/
+        .resource-list {
+            display: flex;
+            flex-wrap: wrap;          /* Allows items to drop to the next line */
+            justify-content: center;  /* Centers the items horizontally */
+            gap: 1rem;
+        }
+
+        /* Ensure the cards don't get too wide or too squished */
+        .resource-card {
+            flex: 1 1 220px;          /* Grow, Shrink, Base width of 220px */
+             max-width: 300px;         /* Optional: Stops them from getting huge on big screens */
+        }
         .resource-card { background: white; border: 1px solid var(--slate-200); border-radius: 8px; padding: 1.5rem; text-align: center; transition: transform 0.2s; }
         .resource-card:hover { border-color: var(--primary-400); transform: translateY(-2px); }
         .resource-name { font-weight: 700; color: var(--primary-800); margin-bottom: 5px; display: block; }
