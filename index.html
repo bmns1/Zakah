@@ -4,164 +4,143 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SVA Tuition Assistance</title>
+    
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
+    <script type="text/javascript">WebFont.load({ google: { families: ["Exo:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic","Ubuntu:300,300italic,400,400italic,500,500italic,700,700italic","Droid Serif:400,400italic,700,700italic","Inter:regular","Thasadith:regular"] }});</script>
+
     <style>
         :root {
-            /* SVA BRAND PALETTE (APPROXIMATED FROM STYLE GUIDE) */
-            /* Update these Hex codes from your Webflow Style Guide if needed */
+            /* SVA BRAND PALETTE (Remapped) */
+            --primary-900: #1B4D3E; /* Deep Forest Green */
+            --primary-700: #2C7A62; /* Medium Green */
+            --primary-600: #388E75; /* Lighter Green for hovers */
+            --primary-500: #14b8a6;
+            --primary-50:  #f0fdfa;
             
-            /* Primary: Navy Blue */
-            --primary-900: #0f172a; /* Darkest Navy */
-            --primary-800: #1e293b;
-            --primary-700: #1e3a8a; /* SVA Blue */
-            --primary-600: #2563eb;
-            --primary-50:  #eff6ff;
-            
-            /* Accent: Gold/Amber */
-            --accent-600: #d97706;
-            --accent-500: #f59e0b;
-            --accent-100: #fef3c7;
-            --accent-50:  #fffbeb;
-
-            /* Status */
-            --danger:     #ef4444;
-            --success:    #10b981;
-
-            /* Neutrals */
-            --slate-900: #0f172a;
-            --slate-700: #334155;
+            /* NEUTRALS */
+            --slate-900: #1e293b; /* Webflow Dark Text */
             --slate-600: #475569;
             --slate-400: #94a3b8;
-            --slate-200: #e2e8f0;
-            --slate-100: #f1f5f9;
-            --slate-50:  #f8fafc;
+            --slate-100: #e2e8f0;
+            --slate-50:  #f8fafc; /* Webflow Background */
             --white:     #ffffff;
 
-            /* Spacing & Radius */
-            --radius-lg: 12px;
-            --radius-md: 8px;
-            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            /* ACCENTS */
+            --amber-600: #F59E0B; /* SVA Gold */
+            --amber-50:  #fffbeb;
+            --danger:    #ef4444;
         }
 
         * { box-sizing: border-box; }
 
         body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            /* Updated Fonts */
+            font-family: 'Inter', system-ui, sans-serif;
             background-color: var(--slate-50);
             color: var(--slate-900);
             margin: 0;
             padding: 0;
-            line-height: 1.6;
+            line-height: 1.5;
             -webkit-font-smoothing: antialiased;
         }
 
         /* HEADER */
         header {
             background-color: var(--primary-900);
-            background-image: linear-gradient(135deg, var(--primary-900) 0%, var(--primary-700) 100%);
+            /* Updated Gradient to match SVA Green tones */
+            background-image: radial-gradient(circle at center, var(--primary-700), var(--primary-900));
             color: var(--white);
-            padding: 5rem 1.5rem 8rem;
+            padding: 4rem 1.5rem 6rem;
             text-align: center;
-            position: relative;
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
         }
         
         header h1 {
-            font-size: 2.75rem;
-            font-weight: 800;
-            margin: 0 0 1.5rem 0;
+            font-family: 'Ubuntu', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0 0 1rem 0;
             letter-spacing: -0.025em;
-            line-height: 1.1;
         }
 
         header p {
-            font-size: 1.25rem;
+            font-size: 1.125rem;
             color: var(--primary-50);
             opacity: 0.9;
-            max-width: 650px;
+            max-width: 600px;
             margin: 0 auto;
-            font-weight: 400;
+            font-weight: 300;
         }
 
         .container {
-            max-width: 1100px;
-            margin: -80px auto 60px;
-            padding: 0 24px;
-            position: relative;
-            z-index: 10;
+            max-width: 1024px;
+            margin: -60px auto 40px;
+            padding: 0 20px;
         }
 
         /* CARD UTILITY */
         .card {
             background: var(--white);
-            border: 1px solid var(--slate-200);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-md);
-            margin-bottom: 3rem;
+            border: 1px solid var(--slate-100);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            margin-bottom: 2rem;
             overflow: hidden;
-            transition: box-shadow 0.3s ease;
-        }
-        .card:hover {
-            box-shadow: var(--shadow-lg);
         }
 
         /* 1. ZAKAH COMMITMENT SECTION */
         .policy-section {
             display: flex;
             flex-direction: column;
-            border-top: 6px solid var(--accent-500);
+            padding: 0;
         }
         
         .policy-header {
-            background: var(--white);
-            padding: 3rem 2.5rem;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
+            background: var(--primary-50);
+            padding: 2rem;
+            border-left: 4px solid var(--primary-900); /* Dark Green Border */
         }
         
         .policy-header h2 {
+            font-family: 'Ubuntu', sans-serif;
             color: var(--primary-900);
-            margin: 0 0 1rem 0;
-            font-size: 1.875rem;
-            font-weight: 700;
+            margin: 0 0 0.5rem 0;
+            font-size: 1.5rem;
         }
 
         .policy-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             border-top: 1px solid var(--slate-100);
-            background: var(--slate-50);
         }
 
         .policy-item {
-            padding: 2.5rem;
-            border-right: 1px solid var(--slate-200);
-            border-bottom: 1px solid var(--slate-200);
+            padding: 2rem;
+            border-right: 1px solid var(--slate-100);
         }
         .policy-item:last-child { border-right: none; }
         
-        .policy-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
-        .policy-title { font-weight: 700; font-size: 1.1rem; color: var(--primary-900); display: block; margin-bottom: 0.5rem; }
-        .policy-desc { font-size: 0.95rem; color: var(--slate-600); }
+        .policy-icon { font-size: 1.5rem; margin-bottom: 1rem; display: block; }
+        .policy-title { font-weight: 600; color: var(--primary-900); display: block; margin-bottom: 0.5rem; }
+        .policy-desc { font-size: 0.875rem; color: var(--slate-600); }
 
         /* 2. STEPS VISUAL */
         .steps-wrapper {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin: 4rem 0;
+            margin: 3rem 0;
             position: relative;
         }
         .steps-wrapper::before {
             content: '';
             position: absolute;
             top: 24px;
-            left: 60px;
-            right: 60px;
-            height: 3px;
-            background: var(--slate-200);
+            left: 50px;
+            right: 50px;
+            height: 2px;
+            background: var(--slate-100);
             z-index: 0;
         }
 
@@ -170,176 +149,128 @@
             z-index: 1;
             text-align: center;
             flex: 1;
-            padding: 0 15px;
+            padding: 0 10px;
         }
         
         .step-circle {
-            width: 56px;
-            height: 56px;
+            width: 50px;
+            height: 50px;
             background: var(--white);
-            border: 3px solid var(--primary-700);
-            color: var(--primary-700);
+            border: 2px solid var(--amber-600); /* Gold Border */
+            color: var(--primary-900);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1.25rem;
-            font-weight: 800;
-            font-size: 1.25rem;
-            box-shadow: 0 0 0 6px var(--slate-50);
+            margin: 0 auto 1rem;
+            font-weight: 700;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            transition: all 0.2s;
         }
-        .step-title { font-weight: 700; font-size: 1.1rem; color: var(--slate-900); display: block; margin-bottom: 0.25rem; }
-        .step-caption { font-size: 0.9rem; color: var(--slate-600); line-height: 1.4; }
+        .step-title { font-weight: 600; font-size: 0.95rem; display: block; margin-bottom: 4px; }
+        .step-caption { font-size: 0.8rem; color: var(--slate-400); }
 
         /* NEW: TIMELINE SECTION */
         .timeline-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-bottom: 4rem;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
         }
         .timeline-card {
             background: var(--white);
-            border: 1px solid var(--slate-200);
-            border-radius: var(--radius-md);
-            padding: 2rem;
+            border: 1px solid var(--slate-100);
+            border-radius: 8px;
+            padding: 1.5rem;
             text-align: left;
-            border-top: 4px solid var(--primary-200);
-            box-shadow: var(--shadow-sm);
+            border-left: 4px solid var(--primary-700);
         }
-        .timeline-date { color: var(--accent-600); font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.85rem; display: block; margin-bottom: 0.5rem; }
-        .timeline-label { font-weight: 700; font-size: 1.25rem; color: var(--slate-900); display: block; margin-bottom: 0.75rem; }
-        .timeline-desc { font-size: 0.95rem; color: var(--slate-600); }
-        .timeline-card.featured { border-top-color: var(--accent-500); background: var(--accent-50); border-color: var(--accent-100); }
+        .timeline-date { color: var(--primary-900); font-weight: 800; font-size: 1.1rem; display: block; margin-bottom: 5px; }
+        .timeline-label { font-weight: 600; color: var(--slate-900); display: block; margin-bottom: 5px; font-family: 'Ubuntu', sans-serif; }
+        .timeline-desc { font-size: 0.85rem; color: var(--slate-600); }
+        .timeline-card.featured { border-left-color: var(--amber-600); background: var(--amber-50); }
 
         /* 3. CALCULATOR DASHBOARD */
         .calc-dashboard {
             display: grid;
-            grid-template-columns: 1.6fr 1fr;
-            border-radius: var(--radius-lg);
-            overflow: hidden;
+            grid-template-columns: 1.5fr 1fr;
         }
-        .calc-inputs { padding: 3rem; background: var(--white); }
-        .calc-title { font-size: 1.5rem; font-weight: 700; color: var(--slate-900); margin-bottom: 0.5rem; }
-        .calc-subtitle { font-size: 1rem; color: var(--slate-600); margin-bottom: 2.5rem; }
-        
-        .input-group { margin-bottom: 2.5rem; }
-        .input-label-row { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 1rem; }
-        .input-label { font-size: 0.95rem; font-weight: 600; color: var(--slate-700); text-transform: uppercase; letter-spacing: 0.05em; }
-        .input-value { font-size: 1.5rem; font-weight: 700; color: var(--primary-700); font-variant-numeric: tabular-nums; }
-        .input-desc { font-size: 0.85rem; color: var(--slate-500); margin-top: 0.75rem; font-style: italic; }
+        .calc-inputs { padding: 2.5rem; border-right: 1px solid var(--slate-100); }
+        .calc-title { font-size: 1.25rem; font-weight: 600; color: var(--slate-900); margin-bottom: 0.5rem; font-family: 'Ubuntu', sans-serif;}
+        .calc-subtitle { font-size: 0.875rem; color: var(--slate-600); margin-bottom: 2rem; }
+        .input-group { margin-bottom: 2rem; }
+        .input-label-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; }
+        .input-label { font-size: 0.875rem; font-weight: 600; color: var(--slate-600); }
+        .input-value { font-size: 1rem; font-weight: 700; color: var(--primary-700); font-variant-numeric: tabular-nums; }
+        .input-desc { font-size: 0.75rem; color: var(--slate-400); margin-top: 0.5rem; }
 
-        input[type=range] { width: 100%; height: 8px; background: var(--slate-200); border-radius: 4px; outline: none; -webkit-appearance: none; }
-        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 24px; height: 24px; border-radius: 50%; background: var(--primary-600); cursor: pointer; border: 4px solid var(--white); box-shadow: 0 0 0 1px var(--slate-300), 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.15s; }
-        input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.1); background: var(--primary-700); }
+        input[type=range] { width: 100%; height: 6px; background: var(--slate-100); border-radius: 3px; outline: none; -webkit-appearance: none; }
+        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%; background: var(--amber-600); cursor: pointer; box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.2); transition: background 0.15s; }
+        input[type=range]::-webkit-slider-thumb:hover { background: #d97706; }
 
-        .calc-output { 
-            background: var(--primary-900); 
-            color: white; 
-            padding: 3rem; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            align-items: center; 
-            text-align: center; 
-            position: relative;
-        }
-        .calc-output::before { 
-            content: ""; 
-            position: absolute; 
-            top: 0; left: 0; right: 0; bottom: 0; 
-            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 100%); 
-            pointer-events: none; 
-        }
+        .calc-output { background: var(--primary-900); color: white; padding: 2.5rem; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; position: relative; }
+        .calc-output::before { content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 20px 20px; opacity: 0.5; pointer-events: none; }
+        .output-label { text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; color: #5eead4; font-weight: 700; margin-bottom: 1rem; position: relative; }
+        .output-percent { font-size: 5rem; font-weight: 800; line-height: 1; color: var(--white); position: relative; font-family: 'Ubuntu', sans-serif; }
+        .output-sub { font-size: 0.9rem; color: var(--primary-50); margin-top: 1rem; opacity: 0.8; max-width: 200px; position: relative; }
         
-        .output-label { text-transform: uppercase; font-size: 0.85rem; letter-spacing: 2px; color: var(--accent-500); font-weight: 700; margin-bottom: 1.5rem; position: relative; }
-        .output-percent { font-size: 5rem; font-weight: 800; line-height: 1; color: var(--white); position: relative; text-shadow: 0 4px 8px rgba(0,0,0,0.2); }
-        .output-sub { font-size: 0.9rem; color: var(--slate-300); margin-top: 2rem; max-width: 240px; position: relative; line-height: 1.5; }
-        
-        .calc-output.ineligible { background: var(--slate-100); color: var(--slate-900); border-left: 6px solid var(--danger); }
-        .calc-output.ineligible .output-percent { color: var(--slate-400); font-size: 3rem; text-shadow: none; }
+        .calc-output.ineligible { background: var(--slate-100); color: var(--slate-900); border-left: 4px solid var(--danger); }
+        .calc-output.ineligible .output-percent { color: var(--slate-400); font-size: 3rem; }
         .calc-output.ineligible .output-label { color: var(--danger); }
         .calc-output.ineligible .output-sub { color: var(--slate-600); }
         .calc-output.ineligible::before { display: none; }
 
         /* NEW: EXTERNAL RESOURCES SECTION */
-        .resources-section { margin-bottom: 5rem; }
-        .resources-title { text-align: center; margin-bottom: 2rem; color: var(--slate-500); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; }
-        
+        .resources-section { margin-bottom: 3rem; }
+        .resources-title { text-align: center; margin-bottom: 1.5rem; color: var(--slate-600); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; }
+        /*.resource-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }*/
         .resource-list {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1.5rem;
+            flex-wrap: wrap;          /* Allows items to drop to the next line */
+            justify-content: center;  /* Centers the items horizontally */
+            gap: 1rem;
         }
 
+        /* Ensure the cards don't get too wide or too squished */
         .resource-card {
-            flex: 1 1 200px;
-            max-width: 280px;
-            background: white;
-            border: 1px solid var(--slate-200);
-            border-radius: var(--radius-md);
-            padding: 2rem 1.5rem;
-            text-align: center;
-            transition: all 0.2s;
-            box-shadow: var(--shadow-sm);
+            flex: 1 1 220px;          /* Grow, Shrink, Base width of 220px */
+             max-width: 300px;         /* Optional: Stops them from getting huge on big screens */
         }
-        .resource-card:hover { 
-            border-color: var(--primary-300); 
-            transform: translateY(-4px); 
-            box-shadow: var(--shadow-md);
-        }
-        .resource-name { font-weight: 700; color: var(--primary-800); margin-bottom: 0.5rem; display: block; font-size: 1.1rem; }
-        .resource-type { font-size: 0.85rem; color: var(--slate-500); text-transform: uppercase; letter-spacing: 0.5px; }
+        .resource-card { background: white; border: 1px solid var(--slate-200); border-radius: 8px; padding: 1.5rem; text-align: center; transition: transform 0.2s; }
+        .resource-card:hover { border-color: var(--primary-700); transform: translateY(-2px); }
+        .resource-name { font-weight: 700; color: var(--primary-900); margin-bottom: 5px; display: block; }
+        .resource-type { font-size: 0.8rem; color: var(--slate-500); }
 
         /* 4. PRE-K OFFER (Bottom) */
         .offer-banner {
-            background: linear-gradient(to right, var(--accent-50), var(--white));
-            border: 1px solid var(--accent-100);
-            border-left: 6px solid var(--accent-500);
-            border-radius: var(--radius-lg);
-            padding: 3rem;
+            background: linear-gradient(to right, var(--amber-50), var(--white));
+            border: 1px solid var(--amber-600);
+            border-left: 6px solid var(--amber-600);
+            border-radius: 8px;
+            padding: 2rem;
             display: flex;
             align-items: center;
-            gap: 3rem;
-            box-shadow: var(--shadow-md);
+            gap: 2rem;
         }
-        .offer-text h3 { margin: 0 0 0.75rem 0; color: var(--slate-900); font-size: 1.5rem; font-weight: 700; }
-        .offer-text p { margin: 0; color: var(--slate-600); font-size: 1rem; line-height: 1.6; }
-        .offer-badge { 
-            background: var(--accent-500); 
-            color: white; 
-            padding: 0.5rem 1rem; 
-            border-radius: 99px; 
-            font-weight: 700; 
-            font-size: 0.75rem; 
-            letter-spacing: 0.05em;
-            white-space: nowrap; 
-            box-shadow: 0 2px 4px rgba(217, 119, 6, 0.3);
-        }
+        .offer-text h3 { margin: 0 0 0.5rem 0; color: var(--slate-900); font-size: 1.25rem; font-family: 'Ubuntu', sans-serif;}
+        .offer-text p { margin: 0; color: var(--slate-600); font-size: 0.95rem; }
+        .offer-badge { background: var(--amber-600); color: white; padding: 0.5rem 1rem; border-radius: 4px; font-weight: 700; font-size: 0.875rem; white-space: nowrap; }
 
-        footer { margin-top: 6rem; padding: 4rem 1.5rem; background: var(--slate-900); color: var(--slate-400); text-align: center; }
-        .legal { max-width: 800px; margin: 0 auto; font-size: 0.8rem; text-align: justify; line-height: 1.7; }
-        .legal strong { color: var(--slate-200); }
-        .legal p { margin-bottom: 1.25rem; }
+        footer { margin-top: 4rem; padding: 3rem 1.5rem; border-top: 1px solid var(--slate-200); text-align: center; }
+        .legal { max-width: 800px; margin: 0 auto; font-size: 0.75rem; color: var(--slate-400); text-align: justify; line-height: 1.6; }
+        .legal strong { color: var(--slate-600); }
+        .legal p { margin-bottom: 1rem; }
 
         @media (max-width: 768px) {
-            header { padding: 3rem 1.5rem 5rem; clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);}
-            header h1 { font-size: 2rem; }
-            .container { margin-top: -40px; }
-            
             .steps-wrapper::before { display: none; }
-            .steps-wrapper { flex-direction: column; gap: 24px; }
-            .step { display: flex; text-align: left; align-items: flex-start; width: 100%; padding: 0; }
-            .step-circle { margin: 0 20px 0 0; width: 48px; height: 48px; font-size: 1rem; min-width: 48px; }
+            .steps-wrapper { flex-direction: column; gap: 20px; }
+            .step { display: flex; text-align: left; align-items: center; width: 100%; padding: 10px; background: white; border-radius: 8px; border: 1px solid var(--slate-100); }
+            .step-circle { margin: 0 15px 0 0; width: 40px; height: 40px; font-size: 0.9rem; }
             
-            .timeline-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .timeline-grid { grid-template-columns: 1fr; }
             .calc-dashboard { grid-template-columns: 1fr; }
-            .calc-inputs { border-right: none; border-bottom: 1px solid var(--slate-200); padding: 2rem; }
-            .calc-output { padding: 3rem 2rem; }
-            
-            .offer-banner { flex-direction: column; align-items: flex-start; gap: 1.5rem; padding: 2rem; }
-            .policy-header { padding: 2rem 1.5rem; }
+            .calc-inputs { border-right: none; border-bottom: 1px solid var(--slate-100); }
+            .offer-banner { flex-direction: column; align-items: flex-start; text-align: left; }
         }
     </style>
 </head>
@@ -355,7 +286,7 @@
     <div class="card policy-section">
         <div class="policy-header">
             <h2>Our Commitment to Dignity</h2>
-            <p style="margin:0; color:var(--slate-600); font-size: 1.1rem;">We administer all forms of financial aid with the utmost privacy, ensuring that financial barriers never stand in the way of a quality Islamic education.</p>
+            <p style="margin:0; color:#475569;">We administer all forms of financial aid with the utmost privacy, ensuring that financial barriers never stand in the way of a quality Islamic education, whether through general donations, Zakat, or Sadaqa.Eligibility for the Tuition Assistance Program extends to students in grades K-8. Pre-K students may also qualify on a limited basis, subject to income and employment verification.</p>
         </div>
         <div class="policy-grid">
             <div class="policy-item">
@@ -460,20 +391,22 @@
 
         <div id="aidResult" class="calc-output">
             <div class="output-label">Estimated Tuition Assistance</div>
-            
-            <div class="output-percent" style="display: flex; flex-direction: column; align-items: center; line-height: 1;">
+          <div class="output-percent" style="display: flex; flex-direction: column; align-items: center; line-height: 1;">
+    
                 <span id="percentOutput_l">--%</span>
-                <span style="font-size: 0.25em; color: rgba(255,255,255,0.6); margin: 5px 0; font-weight: 400; text-transform: uppercase; letter-spacing: 1px;">to</span>
+    
+                <span style="font-size: 0.25em; color: #94a3b8; margin: 5px 0;">to</span>
+    
                 <span id="percentOutput">--%</span>
-            </div>
 
-            <div class="output-sub" id="resultSub">The estimates may not reflect final granted values.‡</div>
+            </div>
+           <div class="output-sub" id="resultSub">The estimates may not reflect final granted values.‡</div>
         </div>
     </div>
 
     <div class="resources-section">
         <div class="resources-title">Maximize Your Support</div>
-        <p style="text-align:center; max-width:700px; margin:0 auto 2rem; color:var(--slate-600); font-size:1rem; line-height: 1.6;">
+        <p style="text-align:center; max-width:700px; margin:0 auto 1.5rem; color:#64748b; font-size:0.9rem;">
             We encourage families to explore all avenues of support. We partner with these organizations and others to ensure you get the help you need. 
             <strong>Please apply to SVA regardless of other applications.</strong>
         </p>
@@ -519,18 +452,19 @@
         <p><strong>‡NON-DISCRIMINATION:</strong> SVA does not discriminate on the basis of race, color, national or ethnic origin, sex, or disability in its scholarship programs or any other educational activities. All qualified individuals are encouraged to apply.</p>
         <p><strong>‡POLICY CHANGES:</strong> Silicon Valley Academy (SVA) reserves the right to modify program requirements, income thresholds, award percentages, and application deadlines at any time without prior notice. This program is separate from SVA’s Scholarship Program. Families may not double-count any awards unless explicitly stated in the award letter.</p>
 
-        <p style="margin-top: 3rem; opacity: 0.4;">© 2025 Silicon Valley Academy</p>
+        <p style="margin-top: 2rem; opacity: 0.5;">© 2025 Silicon Valley Academy</p>
     </div>
 </footer>
 
 <script>
+
     function updateMaxKids() {
       var household = document.getElementById("HouseholdRange").value;
       var kidsSlider = document.getElementById("kidsRange");
 
       // This line changes the HTML max="..." attribute dynamically
       kidsSlider.max = household - 1;
-    }
+}
     
     /* LOGIC CONFIGURATION */
     const AVG_TUITION_PER_STUDENT = 13500; 
@@ -587,6 +521,8 @@
 
         resultBox.className = "calc-output"; 
         percentOutput.style.fontSize = "5rem";
+
+       // resultBox.className = "calc-output"; 
         percentOutput_l.style.fontSize = "5rem";
 
         if (discountPercent <= 10) {
